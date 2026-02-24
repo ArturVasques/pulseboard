@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <span>PulseBoard</span>
+
+  <span class="spacer"></span>
+
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon>
+    <span class="user">Conta</span>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<router-outlet />

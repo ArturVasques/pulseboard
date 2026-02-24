@@ -1,0 +1,31 @@
+.wrap {
+  display: grid;
+  place-items: center;
+  min-height: calc(100dvh - 64px);
+  padding: 24px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+}
+
+.full {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.divider {
+  margin: 16px 0;
+}
+
+.hint {
+  margin: 12px 0 0;
+  opacity: 0.75;
+}
