@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { catchError, finalize, of, tap } from 'rxjs';
 
@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { AuthService } from '../../auth.service';
 
@@ -21,15 +22,15 @@ import { AuthService } from '../../auth.service';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    RouterLink,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
+    MatProgressBarModule
   ],
 })
-export class Login {
+export class LoginPage {
   private readonly fb = inject(FormBuilder);
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
@@ -37,6 +38,7 @@ export class Login {
   private readonly destroyRef = inject(DestroyRef);
 
   readonly busy = signal(false);
+  readonly year = signal(new Date().getFullYear());
 
   readonly form = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
